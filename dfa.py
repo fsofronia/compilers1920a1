@@ -6,24 +6,21 @@
 στα σημεία (Α), (Β) και (Γ) - διαβάστε τα σχόλια!
 """
 
-
-transitions = { 
-
-	# (Α) Συμπληρώστε τον πίνακα μεταβάσεων ως λεξικό (dictionary).
-	# Η αρχική κατάσταση πρέπει να ονομάζεται 's0'.
-	# Για λεπτομέρειες δείτε στο:
-	# http://mixstef.github.io/courses/compilers/lecturedoc/unit1/module1.html#id7
+# Προσθήκη 1!
+transitions = {'s0':{'DIGIT':'s1', '.':'s2'} ,
+               's1':{'DIGIT':'s1','.':'s3'},
+               's3':{'DIGIT':'s5'},
+               's5':{'DIGIT':'s5'},
+               's2':{'DIGIT':'s4'},
+               's4':{'DIGIT':'s4'} 
 
      	      } 
 
-
-accepts = { 
-
-	# (Β) Συμπληρώστε το λεξικό των καταστάσεων αποδοχής και των
-	# αντίστοιχων επιστρεφόμενων συμβόλων (tokens)
-	# Για λεπτομέρειες δείτε στο:
-	# http://mixstef.github.io/courses/compilers/lecturedoc/unit1/module1.html#id8
-
+# Προσθήκη 2!
+accepts = { 's3':'FLOAT_TOKEN',
+	    's4':'FLOAT_TOKEN',
+	    's5':'FLOAT_TOKEN'
+	
      	  }
 
 
@@ -35,11 +32,11 @@ def get_char(text,pos):
 	
 	c = text[pos]
 	
-	# (Γ) Προαιρετικά, μπορείτε να ομαδοποιήσετε τους
-	# χαρακτήρες εισόδου εδώ.
-	# Για λεπτομέρειες δείτε στο:
-	# http://mixstef.github.io/courses/compilers/lecturedoc/unit1/module1.html#id11
-	
+	# Προσθήκη 3!
+	# Με την προθήκη που έκανα:
+	# Όταν έχει ως είσοδο 0....9 επιστρέφει Digit
+	if c>='0' and c<='9':
+        	return 'DIGIT'	
 	return c
 	
 
